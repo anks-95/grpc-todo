@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package todo;
+
+option go_package = "protogen/todo";
+
+service TodoService {
+  rpc PostTodo (PostTodoRequest) returns (PostTodoResponse);
+  rpc ListTodos (ListTodosRequest) returns (ListTodosResponse);
+}
+
+message Todo {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message PostTodoRequest {
+  Todo todo = 1;
+}
+
+message PostTodoResponse {
+  bool success = 1;
+}
+
+message ListTodosRequest {
+
+}
+
+message ListTodosResponse {
+  repeated Todo todos = 1;
+}
